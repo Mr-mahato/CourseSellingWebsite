@@ -5,6 +5,8 @@ import '../styles/Header.css'
 </style>
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+
+import {Link} from 'react-router-dom'
 function Header() {
   return (
     <nav>
@@ -22,8 +24,8 @@ function Header() {
         </ul>
       </div>
       <div className="userHandel">
-        <button id="signIn"> Sign In </button>
-        <button id="signUp"> Sign Up</button>
+        <button id="signUp"> Sign In</button>
+        <Link to={'/signup'}> <button id="signIn">  Sign Up </button></Link>
       </div>
     </nav>
   );

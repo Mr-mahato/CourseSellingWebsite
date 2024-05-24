@@ -2,13 +2,19 @@ import React from "react";
 import girl from "../assets/girlWithLaptop.png";
 import user1 from "../assets/user1.jpg";
 import user2 from "../assets/user2.jpg";
-import uiUx from '../assets/uiUx.png'
-import devlopment from '../assets/development.png'
-
+import uiUx from "../assets/uiUx.png";
+import devlopment from "../assets/development.png";
 
 import "../styles/Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookOpen, faStar , faSearch , faAngleRight , faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookOpen,
+  faStar,
+  faSearch,
+  faAngleRight,
+  faAngleLeft,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 function Home() {
   return (
     <main>
@@ -71,69 +77,109 @@ function Home() {
         </div>
       </div>
 
-    <div className="course-section">
+      <div className="course-section">
         <div className="course-Header">
-            <h1>All<span id="bright"> Courses </span> of Educare</h1>
-            <div id="rightCourseHeader">
+          <h1>
+            All<span id="bright"> Courses </span> of Educare
+          </h1>
+          <div id="rightCourseHeader">
             <input type="text" placeholder="Search your course" />
             <FontAwesomeIcon icon={faSearch} style={{ height: "1.3em" }} />
-            </div>
+          </div>
         </div>
         {/* this is the grid section */}
         <div className="grid-container">
-            <div className="grid-child">
-                <img src={uiUx} alt="this is the ui/Ux design course" />
-                <p>UI/UX Design</p>
-            </div>
-            <div className="grid-child">
-                 <img src={devlopment} alt="this is the ui/Ux design course" />
-                <p>Development</p>
-            </div>
-            <div className="grid-child">
-                 <img src={uiUx} alt="this is the ui/Ux design course" />
-                <p>UI/UX Design</p>
-            </div>
-            <div className="grid-child">
-                 <img src={uiUx} alt="this is the ui/Ux design course" />
-                <p>UI/UX Design</p>
-            </div>
-            <div className="grid-child">
-                 <img src={uiUx} alt="this is the ui/Ux design course" />
-                <p>UI/UX Design</p>
-            </div>
-            <div className="grid-child">
-                 <img src={uiUx} alt="this is the ui/Ux design course" />
-                <p>UI/UX Design</p>
-            </div>
-            <div className="grid-child">
-                 <img src={uiUx} alt="this is the ui/Ux design course" />
-                <p>UI/UX Design</p>
-            </div>
-            <div className="grid-child">
-                 <img src={uiUx} alt="this is the ui/Ux design course" />
-                <p>UI/UX Design</p>
-            </div>
+          <div className="grid-child">
+            <img src={uiUx} alt="this is the ui/Ux design course" />
+            <p>UI/UX Design</p>
+          </div>
+          <div className="grid-child">
+            <img src={devlopment} alt="this is the ui/Ux design course" />
+            <p>Development</p>
+          </div>
+          <div className="grid-child">
+            <img src={uiUx} alt="this is the ui/Ux design course" />
+            <p>UI/UX Design</p>
+          </div>
+          <div className="grid-child">
+            <img src={uiUx} alt="this is the ui/Ux design course" />
+            <p>UI/UX Design</p>
+          </div>
+          <div className="grid-child">
+            <img src={uiUx} alt="this is the ui/Ux design course" />
+            <p>UI/UX Design</p>
+          </div>
+          <div className="grid-child">
+            <img src={uiUx} alt="this is the ui/Ux design course" />
+            <p>UI/UX Design</p>
+          </div>
+          <div className="grid-child">
+            <img src={uiUx} alt="this is the ui/Ux design course" />
+            <p>UI/UX Design</p>
+          </div>
+          <div className="grid-child">
+            <img src={uiUx} alt="this is the ui/Ux design course" />
+            <p>UI/UX Design</p>
+          </div>
         </div>
 
         <div className="courses-type">
-            <div className="courseTypeHeader">
-                <h1>Many types of <span id="bright"> Courses</span></h1>
-                <div>
-                    <FontAwesomeIcon icon={faAngleLeft} style={{ height: "1.3em" }} />
-                    <FontAwesomeIcon icon={faAngleRight} style={{ height: "1.3em" }} />
-                </div>
+          <div className="courseTypeHeader">
+            <h1>
+              Many types of <span id="bright"> Courses</span>
+            </h1>
+            <div style={{ display: "flex", gap: "2px" }}>
+              <FontAwesomeIcon
+                icon={faAngleLeft}
+                style={{
+                  height: "1.3em",
+                  color: "white",
+                  cursor: "pointer",
+                  padding: "2px 6px",
+                  borderRadius: "5px",
+                  backgroundColor: "#2F49CF",
+                }}
+              />
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                style={{
+                  height: "1.3em",
+                  color: "white",
+                  cursor: "pointer",
+                  padding: "2px 6px",
+                  borderRadius: "5px",
+                  backgroundColor: "#2F49CF",
+                }}
+              />
             </div>
+          </div>
 
-            <div className="courseContainer">
-                <div className="courseChild"></div>
-                <div className="courseChild"></div>
-                <div className="courseChild"></div>
-
-            </div>
-        <button>Explore More Course</button>
+          <div className="courseContainer">
+            <div className="courseChild"></div>
+            <div className="courseChild"></div>
+            <div className="courseChild"></div>
+          </div>
+          <div className="otherCourse">
+            <button>Other Course</button>
+            <FontAwesomeIcon icon={faArrowRight} style={{ color: "white" }} />
+          </div>
         </div>
-    </div>
 
+        {/* this here is for instructor one */}
+      </div>
+
+      <section className="instruction">
+        <div className="instruction-container">
+          <div className="instruction-left">
+            <p style={{color:'#2F49CF' , fontWeight:'bold' , marginBottom:'10px'}}>Become A Instructor</p>
+            <h1>You can join with <br /> EduCare as a instructor?</h1>
+          </div>
+          <div className="instruction-right">
+          <button>Deep Information</button>
+          </div>
+          <div class="arrow-right"></div>
+        </div>
+      </section>
     </main>
   );
 }
