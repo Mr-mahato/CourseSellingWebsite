@@ -10,14 +10,26 @@ import {
   Box,
 } from "@mui/material";
 
+import { useState } from "react";
+
 import { FormHelperText } from "@mui/material";
 export default function Signup() {
+
+  const [user , setUser] = useState({
+    username: "",
+    email: "",
+    password: ""
+  })
+
+  const handelFormChange = (e)=>{
+    setUser({...user , [e.target.name]: e.target.value});
+  }
+
   return (
     <Container
-      maxWidth="sm"
-      style={{ border: "2px solid black", marginTop: "5px" }}
+      sx={{display:"flex" , alignItems:"center" ,justifyContent:"center" , height:"100vh" , width:"100vw"}}
     >
-      <Box sx={{ padding: 2 }}>
+      <Box sx={{ padding: 2  , border:"2px solid gray" ,width:"40vw" }}>
         <Typography variant="h5" component="h2">
           Sign up
         </Typography>
@@ -25,8 +37,12 @@ export default function Signup() {
           <Grid item xs={12}>
             <Box display="flex" justifyContent="center">
               <FormControl>
-                <InputLabel>Username</InputLabel>
-                <OutlinedInput />
+              <TextField
+                  type="text"
+                  label="Username"
+                   name="username"
+                   onChange={handelFormChange}
+                />
               </FormControl>
             </Box>
           </Grid>
@@ -36,6 +52,8 @@ export default function Signup() {
                 <TextField
                   type="email"
                   label="Email"
+                  name="email"
+                  onChange={handelFormChange}
                   variant="outlined"
                   required
                 />
@@ -50,8 +68,14 @@ export default function Signup() {
           <Grid item xs={12}>
             <Box display="flex" justifyContent="center">
               <FormControl>
-                <InputLabel>Password</InputLabel>
-                <OutlinedInput type="password" />
+                <TextField
+                  type="password"
+                  label="Password"
+                  name="password"
+                  onChange={handelFormChange}
+                  variant="outlined"
+                  required
+                />
               </FormControl>
             </Box>
           </Grid>
@@ -59,7 +83,7 @@ export default function Signup() {
             <Box display="flex" justifyContent="center">
               <Button
                 onClick={() => {
-                  console.log("you clicekd");
+                 console.log(user);
                 }}
                 variant="contained"
                 color="primary"

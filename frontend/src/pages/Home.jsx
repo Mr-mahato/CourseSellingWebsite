@@ -177,7 +177,7 @@ function Home() {
           <div className="instruction-right">
           <button>Deep Information</button>
           </div>
-          <div class="arrow-right"></div>
+          <div className="arrow-right"></div>
         </div>
       </section>
     </main>

@@ -24,8 +24,8 @@ function Header() {
         </ul>
       </div>
       <div className="userHandel">
-        <button id="signUp"> Sign In</button>
-        <Link to={'/signup'}> <button id="signIn">  Sign Up </button></Link>
+        <Link to={'/signin'} id="signIn"> Sign In</Link>
+        <Link to={'/signup'} id="signUp"> Sign Up</Link>
       </div>
     </nav>
   );
