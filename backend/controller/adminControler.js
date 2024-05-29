@@ -24,7 +24,7 @@ const signUp = (req, res) => {
     res.status(400).json({ Error: err[0].message });
     return;
   }
-  fs.readFile(__dirname + "/data.json", "utf-8", (err, data) => {
+  fs.readFile("data.json", "utf-8", (err, data) => {
     if (err) res.send("error encounter while reading the file");
     const users = JSON.parse(data);
     // const salt = bcrypt.genSaltSync(10);
@@ -41,8 +41,8 @@ const signUp = (req, res) => {
       id: 2,
     };
     users.push(userObj);
-    const token = generateToken({ id: 2 });
-    fs.writeFile(__dirname + "/data.json", JSON.stringify(users), (err) => {
+    const token = generateToken({ username , email , id:2 });
+    fs.writeFile("data.json", JSON.stringify(users), (err) => {
       if (err) res.send("error encounter");
       res.send({ message: "user created successfully", token });
     });
@@ -57,7 +57,7 @@ const login = (req, res) => {
     res.status(400).json({ Error: err[0].message });
     return;
   }
-  fs.readFile(__dirname + "/data.json", "utf-8", (err, data) => {
+  fs.readFile("data.json", "utf-8", (err, data) => {
     if (err) res.send(err);
     const users = JSON.parse(data);
     // const salt = bcrypt.genSaltSync(10);
@@ -71,7 +71,7 @@ const login = (req, res) => {
       res.status(400).json({ message: "password is incorrect" });
       return;
     }
-    const token = generateToken({ id: user.id });
+    const token = generateToken({ email:user.email , username:user.username , id:user.id});
     res.status(200).json({ message: "login successfully", token });
   });
 };
