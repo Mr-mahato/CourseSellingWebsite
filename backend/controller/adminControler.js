@@ -58,21 +58,27 @@ const login = (req, res) => {
     return;
   }
   fs.readFile("data.json", "utf-8", (err, data) => {
-    if (err) res.send(err);
+    if (err) {
+      res.send('error while reading file')
+    }
     const users = JSON.parse(data);
     // const salt = bcrypt.genSaltSync(10);
     const user = users.find((user) => user.email === email);
+    console.log(user);
     if (!user) {
       res.status(404).json({ message: "user not found" });
       return;
     }
     const isPasswordCorrect = bcrypt.compareSync(password, user.hashedPassword);
+    console.log(isPasswordCorrect);
     if (!isPasswordCorrect) {
-      res.status(400).json({ message: "password is incorrect" });
-      return;
+      console.log('you are here');
+      res.status(400).send({ message: "password is incorrect" });
     }
-    const token = generateToken({ email:user.email , username:user.username , id:user.id});
-    res.status(200).json({ message: "login successfully", token });
+    else{
+      const token = generateToken({ email:user.email , username:user.username , id:user.id});
+      res.status(200).json({ message: "login successfully", token });
+    }
   });
 };
 
