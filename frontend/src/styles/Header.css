@@ -24,13 +24,18 @@ nav{
 .mid-list{
     display: flex;
     justify-content: center;
-    list-style-type: none;
     gap: 2em;
+}
+.mid-list a{
     color: #6E7075;
     cursor: pointer;
+    list-style-type: none;
     font-size: 1.3em;
+    text-decoration: none;
+
+
 }
-.mid-list li:hover{
+.mid-list a:hover{
     color: #314ACF;
 }
 .userHandel{
@@ -38,22 +43,29 @@ nav{
     gap: 1px;
     margin: px;
 }
-#signIn{
+#signIn {
     padding: 1em;
     border: none;
     cursor: pointer;    
     background: none;
     font-size: 1em;
     color: #6E7075;
+    text-decoration: none;
 }
 
 #signUp{
-    padding: 0.4em 1.5em;
+    padding: 1em 1.5em;
     border: none;
     cursor: pointer;    
     background: #2F49CF;
     font-size: 1em;
     color: #ffff;
     border-radius: 10px;
+    text-decoration: none;
     font-weight: bolder;
+    align-self: center;
+}
+
+.userLoggedHandel Avatar{
+    cursor: pointer;
 }

@@ -9,12 +9,17 @@ import {
     Container,
     Box,
   } from "@mui/material";
+  import axios from 'axios'
+  import {Link , useNavigate} from 'react-router-dom'
   
-  import { useState } from "react";
+  import { useState , useContext } from "react";
+  import { AuthContext  } from "../context/authContext";
   
   import { FormHelperText } from "@mui/material";
   export default function SignIn() {
   
+    const {setIsAuthenticated} = useContext(AuthContext);
+    const navigate = useNavigate();
     const [user , setUser] = useState({
       email: "",
       password: ""
@@ -22,6 +27,20 @@ import {
   
     const handelFormChange = (e)=>{
       setUser({...user , [e.target.name]: e.target.value});
+    }
+
+    const handelSignIn = async()=>{
+      try {
+       const  response =  await axios.post(`http://localhost:3000/admin/login`,{email:user.email , password:user.password});
+       if(response.data){
+        localStorage.setItem('user',JSON.stringify(response.data.token))
+        setIsAuthenticated(true);
+        navigate('/');
+       }
+        
+      } catch (error) {
+        console.log(error.response.data);
+      }
     }
   
     return (
@@ -45,11 +64,7 @@ import {
                     variant="outlined"
                     required
                   />
-                  {1 && (
-                    <FormHelperText style={{ color: "red" }}>
-                      Invalid email format
-                    </FormHelperText>
-                  )}
+                  
                 </FormControl>
               </Box>
             </Grid>
@@ -68,16 +83,15 @@ import {
               </Box>
             </Grid>
             <Grid item xs={12}>
-              <Box display="flex" justifyContent="center">
+              <Box display="flex" justifyContent="center" alignItems="center">
                 <Button
-                  onClick={() => {
-                   console.log(user);
-                  }}
+                  onClick={handelSignIn}
                   variant="contained"
                   color="primary"
                 >
                   Sign In
                 </Button>
+                <Link to={'/signup'} style={{textDecoration:'none'}}>New here lets Join?</Link>
               </Box>
             </Grid>
           </Grid>

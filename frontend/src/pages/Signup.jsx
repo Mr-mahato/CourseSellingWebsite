@@ -10,26 +10,50 @@ import {
   Box,
 } from "@mui/material";
 
+import { Link , useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios'
 
 import { FormHelperText } from "@mui/material";
 export default function Signup() {
 
-  const [user , setUser] = useState({
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
     username: "",
     email: "",
-    password: ""
-  })
+    password: "",
+  });
 
-  const handelFormChange = (e)=>{
-    setUser({...user , [e.target.name]: e.target.value});
+  const handelFormChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handelSignup = async()=>{
+    try {
+
+     const  response =  await axios.post(`http://localhost:3000/admin/signup`,{username:user.username , email:user.email , password:user.password});
+     if(response.data){
+      navigate('/signin');
+      console.log(response.data);
+     }
+      
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   return (
     <Container
-      sx={{display:"flex" , alignItems:"center" ,justifyContent:"center" , height:"100vh" , width:"100vw"}}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
     >
-      <Box sx={{ padding: 2  , border:"2px solid gray" ,width:"40vw" }}>
+      <Box sx={{ padding: 2, border: "2px solid gray", width: "40vw" }}>
         <Typography variant="h5" component="h2">
           Sign up
         </Typography>
@@ -37,11 +61,11 @@ export default function Signup() {
           <Grid item xs={12}>
             <Box display="flex" justifyContent="center">
               <FormControl>
-              <TextField
+                <TextField
                   type="text"
                   label="Username"
-                   name="username"
-                   onChange={handelFormChange}
+                  name="username"
+                  onChange={handelFormChange}
                 />
               </FormControl>
             </Box>
@@ -57,11 +81,6 @@ export default function Signup() {
                   variant="outlined"
                   required
                 />
-                {1 && (
-                  <FormHelperText style={{ color: "red" }}>
-                    Invalid email format
-                  </FormHelperText>
-                )}
               </FormControl>
             </Box>
           </Grid>
@@ -80,16 +99,22 @@ export default function Signup() {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Box display="flex" justifyContent="center">
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              gap="2px"
+            >
               <Button
-                onClick={() => {
-                 console.log(user);
-                }}
+                onClick={handelSignup}
                 variant="contained"
                 color="primary"
               >
-                Sign up
+                Sign up.
               </Button>
+              <Link to={"/signin"} style={{ textDecoration: "none" }}>
+                Already Have account
+              </Link>
             </Box>
           </Grid>
         </Grid>
