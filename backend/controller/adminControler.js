@@ -64,7 +64,6 @@ const login = (req, res) => {
     const users = JSON.parse(data);
     // const salt = bcrypt.genSaltSync(10);
     const user = users.find((user) => user.email === email);
-    console.log(user);
     if (!user) {
       res.status(404).json({ message: "user not found" });
       return;
