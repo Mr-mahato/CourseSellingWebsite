@@ -20,7 +20,6 @@ export const AuthProvider = ({children}) => {
                     Authorization:`Bearer ${token}`}
             }) 
             if(resp){
-                console.log(resp.data);
                 setUser({
                     ...resp.data
                 });
@@ -31,6 +30,7 @@ export const AuthProvider = ({children}) => {
             console.log('you got error in authprovider');
         }
     }
+    
     useEffect(()=>{
         if(token){
             getUserInfoData();
