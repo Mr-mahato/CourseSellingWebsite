@@ -9,7 +9,6 @@ import Missing from "./pages/Missing";
 import Profile from "./pages/Profile";
 import Home from './pages/Home'
 import Courses from "./component/Courses";
-import CreateCourse from "./pages/CreateCourse";
 export default function App() {
   return (
     <div>
@@ -22,7 +21,6 @@ export default function App() {
         <Route path="/courses" element={<Courses/>}/>
         <Route path="/profile"  element={<Profile/>} />
         </Route>
-        <Route path="/create" element={<CreateCourse/>} />
         <Route path="*" element={<Missing/>} />
       </Routes>
       </AuthProvider>

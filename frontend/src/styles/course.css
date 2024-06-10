@@ -1,3 +1,61 @@
-.courseContainer{
-    height: 100vh;
+.coursePageContainer {
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .CoursePagegrid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50vh 50vh;
+    padding: 10px;
 }
+  
+  .CoursePagegrid-child {
+    background-color: #fff;
+    padding: 3px;
+    position: relative;
+}
+  
+  .CoursePagegrid-child img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .CourseImage{
+    position: relative;
+  }
+.CourseImage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.CourseImage:hover::after {
+    opacity: 0.5;
+    cursor: pointer;
+}
+  
+  .CoursePagegrid-child p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .CoursePagegrid-child b {
+    font-size: 18px;
+    color: #337ab7;
+  }
+  
+  .CoursePagegrid-child p:last-child {
+    font-size: 14px;
+    color: #666;
+  }

@@ -33,7 +33,7 @@ import {
       try {
        const  response =  await axios.post(`http://localhost:3000/admin/login`,{email:user.email , password:user.password});
        if(response.data){
-        localStorage.setItem('user',JSON.stringify(response.data.token))
+        localStorage.setItem('token',JSON.stringify(response.data.token))
         setIsAuthenticated(true);
         navigate('/');
        }

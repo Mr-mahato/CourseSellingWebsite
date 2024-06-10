@@ -10,7 +10,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
     const [user , setUser] = useState(null);
     const [isAuthenticated , setIsAuthenticated] = useState(false);
-    const [token , setToken] = useState(JSON.parse(localStorage.getItem('user')));
+    const [token , setToken] = useState(JSON.parse(localStorage.getItem('token')));
 
     const getUserInfoData = async()=>{
         try {

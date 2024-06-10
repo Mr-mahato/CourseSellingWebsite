@@ -13,8 +13,11 @@ import {
   Box,
   TextField,
   Modal,
+  IconButton,
+  Alert,
   Button,
 } from "@mui/material";
+import {Close} from '@mui/icons-material'
 import { useState } from "react";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 function Profile() {
@@ -59,7 +62,7 @@ const style = {
   bgcolor: "background.paper",
   border: "2px solid gray",
   boxShadow: 24,
-  height: "60vh",
+  height: "80vh",
   pt: 2,
   px: 4,
   pb: 3,
@@ -70,29 +73,34 @@ function Sidebar() {
   const [modal, setModal] = useState(false);
   const [file, setFile] = useState("");
   const [course, setCourse] = useState({
-    courseName: "",
-    courseDescription: "",
-    tutorName: "",
+    Title: "",
+    Description: "",
+    Price: "",
+    Published: "",
+    Tutor: "",
   });
 
   const saveFile = async () => {
     try {
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("File", file);
       console.log(course);
-      Object.keys(course).forEach(key=>{
-        formData.append(key,course[key]);
-      })
+      Object.keys(course).forEach((key) => {
+        formData.append(key, course[key]);
+      });
       const response = await axios.post(
-        "http://localhost:3000/admin/fileUpload", 
+        "http://localhost:3000/admin/createCourses",
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
           },
         }
       );
-      console.log(response.data);
+      alert('course Created Successfully!!');
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +108,7 @@ function Sidebar() {
 
   const handleUpload = (e) => {
     console.log("file changed");
-    console.log(file)
+    console.log(file);
     saveFile();
   };
 
@@ -111,6 +119,13 @@ function Sidebar() {
       setCourse({ ...course, [e.target.name]: e.target.value });
     }
   };
+
+  const handelAlert = (e,reason)=>{
+    if(reason == 'clickaway'){
+      return;
+    }
+    setAlert(false);
+  }
 
   return (
     <div className="sideBar">
@@ -163,8 +178,8 @@ function Sidebar() {
               >
                 <TextField
                   id="outlined-basic"
-                  value={course.courseName}
-                  name="courseName"
+                  value={course.Title}
+                  name="Title"
                   onChange={handelChange}
                   label="Course Name"
                   placeholder="Enter your Course Title"
@@ -175,8 +190,8 @@ function Sidebar() {
                 <TextField
                   id="outlined-basic"
                   label="Course Description"
-                  value={course.courseDescription}
-                  name="courseDescription"
+                  value={course.Description}
+                  name="Description"
                   onChange={handelChange}
                   placeholder="Enter your Course Description"
                   variant="outlined"
@@ -188,10 +203,32 @@ function Sidebar() {
                 <TextField
                   id="outlined-basic"
                   label="Tutor Name"
-                  value={course.tutorName}
-                  name="tutorName"
+                  value={course.Tutor}
+                  name="Tutor"
                   onChange={handelChange}
                   placeholder="Enter Your name"
+                  variant="outlined"
+                  sx={{ width: "100%" }}
+                />
+
+                <TextField
+                  id="outlined-basic"
+                  label="Price"
+                  type="number"
+                  value={course.Price}
+                  name="Price"
+                  onChange={handelChange}
+                  placeholder="Enter course cost:"
+                  variant="outlined"
+                  sx={{ width: "100%" }}
+                />
+                <TextField
+                  id="outlined-basic"
+                  label="Published"
+                  value={course.Published}
+                  name="Published"
+                  onChange={handelChange}
+                  placeholder="Is it available or not?"
                   variant="outlined"
                   sx={{ width: "100%" }}
                 />
