@@ -24,14 +24,14 @@ const {createCourse , getCourse , updateCourse} = require('../controller/adminCr
 adminRouter.post('/signup' ,signUp)
 adminRouter.post('/login' ,login)
 
-adminRouter.post('/createCourses', jwtAuthenticate ,createCourse);
+adminRouter.post('/createCourses', jwtAuthenticate, upload.single('File') , createCourse);
 
-adminRouter.get('/courses', jwtAuthenticate ,getCourse);
+adminRouter.get('/courses' ,getCourse);
 
 adminRouter.put('/updateCourse/:courseId' , jwtAuthenticate , updateCourse);
 
 
-adminRouter.post('/fileUpload', upload.single('file'), handelImageUpload);
+adminRouter.post('/fileUpload',  handelImageUpload);
 
 adminRouter.get('/userInfo' , jwtAuthenticate , getUserInfo);
 

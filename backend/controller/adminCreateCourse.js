@@ -1,57 +1,68 @@
 const express = require("express");
-const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
 
+const {courseModal} = require('../modal/courseModal');
+const { userModal } = require("../modal/userModal");
 /*Body: { title: 'course title', description: 'course description', price: 100, imageLink: 'https://linktoimage.com', published: true }*/
 
-const createCourse = (req, res) => {
-  let course = req.body;
-  const id = uuidv4();
-  course = { ...course, id };
-  fs.readFile("course.json", "utf-8", (err, data) => {
-    if (err) res.status(400).send("Error while reading the file");
-    const courses = JSON.parse(data);
-    courses.push(course);
-    fs.writeFile("course.json", JSON.stringify(courses), (err) => {
-      if (err) res.status(400).send("Error while writing the file");
-      else
-        res
-          .status(200)
-          .json({ msg: "course created successfully ", courseId: id });
-    });
-  });
+// here is little work is left to do ,
+// task-1: apply the zod validation here for the course
+// task-2:
+
+const createCourse = async(req, res) => {
+  try {
+    const {Title , Description , Price , Published , Tutor} = req.body;
+
+// handel the file upload here
+
+    console.log(req.file);
+    const course = {
+      Title ,
+      Description,
+      Price,
+      Published,
+      Tutor,
+      File:req.file.filename
+    }
+    const courseData =  new courseModal(course);
+
+    const savedCourse = await courseData.save();
+    console.log(savedCourse);
+    if(savedCourse){
+      res
+      .status(200)
+      .json({ msg: "course created successfully ", courseId: savedCourse._id });
+    }
+  } catch (error) {
+   console.log(error);
+   res.status(500).send('Internal server error'); 
+  }
 };
 
-const getCourse = (req, res) => {
-  fs.readFile("course.json", "utf-8", (err, data) => {
-    if (err) res.send("error encounter while reading the file");
-    const courses = JSON.parse(data);
+//  you need Price , published and tutor
+
+const getCourse = async(req, res) => {
+
+  try {
+    const courses = await courseModal.find({});
     res.status(200).json({ course: courses });
-  });
+    
+  } catch (error) {
+   console.log(error);
+    res.status(500).send('Internal server error'); 
+  }
 };
 
 const updateCourse = async (req, res) => {
   try {
     const course = req.body;
     const { courseId } = req.params;
-    console.log(courseId);
-    fs.readFile("course.json", "utf-8", (err, data) => {
-      if (err) res.status(400).send("error while reading the file");
-      const courses = JSON.parse(data);
-      const courseIndex = courses.findIndex((course) => course.id == courseId);
 
-      if (courseIndex == -1) {
-        res.status(400).send("Course not found");
-        return;
-      }
-      Object.assign(courses[courseIndex], course);
-      fs.writeFile("course.json", JSON.stringify(courses), (err) => {
-        if (err) res.status(400).send("error while writing the file");
-        res.send({ message: "Course Updated successfully" });
-      });
-    });
-  } catch {
-    console.log("error while updating the course");
+    const updatedCourse = await courseModal.findOneAndUpdate({_id:courseId},course , {new:true})
+
+    console.log(updatedCourse);
+    res.status(200).json({ message: "Course Updated successfully" });
+  } catch(error) {
+    console.log(error)
     res.send("error");
   }
 };

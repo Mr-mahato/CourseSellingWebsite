@@ -4,6 +4,7 @@ const fs = require("fs");
 const { generateToken } = require("../util/generateToken");
 const z = require("zod");
 
+const { userModal } = require("../modal/userModal");
 // zod validatin for the userSchema
 const signUpSchema = z.object({
   username: z.string(),
@@ -16,69 +17,67 @@ const signInSchema = z.object({
   password: z.string().min(5),
 });
 
-const signUp = (req, res) => {
-  const { username, email, password } = req.body;
-  const { error } = signUpSchema.safeParse({ username, email, password });
-  if (error) {
-    let err = JSON.parse(error.message);
-    res.status(400).json({ Error: err[0].message });
-    return;
-  }
-  fs.readFile("data.json", "utf-8", (err, data) => {
-    if (err) res.send("error encounter while reading the file");
-    const users = JSON.parse(data);
-    // const salt = bcrypt.genSaltSync(10);
-    const user = users.find((user) => user.email == email);
-    if (user) {
+const signUp = async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    // zod validation
+    const { error } = signUpSchema.safeParse({ username, email, password });
+    if (error) {
+      let err = JSON.parse(error.message);
+      res.status(400).json({ Error: err[0].message });
+      return;
+    }
+    const userExist = await userModal.findOne({ email });
+    if (userExist) {
       res.status(400).json({ message: "User already exist" });
       return;
     }
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const userObj = {
+    const newUser = {
       username,
       email,
-      hashedPassword,
-      id: 2,
+      password: hashedPassword,
     };
-    users.push(userObj);
-    const token = generateToken({ username , email , id:2 });
-    fs.writeFile("data.json", JSON.stringify(users), (err) => {
-      if (err) res.send("error encounter");
-      res.send({ message: "user created successfully", token });
-    });
-  });
+
+    const user = new userModal(newUser);
+    const savedUser = await user.save();
+    console.log(savedUser);
+    if (savedUser) {
+      const token = generateToken({ id: savedUser._id });
+      res.status(201).json({ message: "user created successfully", token });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };
 
-const login = (req, res) => {
-  const { email, password } = req.body;
-  const { error } = signInSchema.safeParse({ email, password });
-  if (error) {
-    let err = JSON.parse(error.message);
-    res.status(400).json({ Error: err[0].message });
-    return;
-  }
-  fs.readFile("data.json", "utf-8", (err, data) => {
-    if (err) {
-      res.send('error while reading file')
-    }
-    const users = JSON.parse(data);
-    // const salt = bcrypt.genSaltSync(10);
-    const user = users.find((user) => user.email === email);
-    if (!user) {
-      res.status(404).json({ message: "user not found" });
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    console.log(password);
+    const { error } = signInSchema.safeParse({ email, password });
+    if (error) {
+      let err = JSON.parse(error.message);
+      res.status(400).json({ Error: err[0].message });
       return;
     }
-    const isPasswordCorrect = bcrypt.compareSync(password, user.hashedPassword);
-    console.log(isPasswordCorrect);
-    if (!isPasswordCorrect) {
-      console.log('you are here');
-      res.status(400).send({ message: "password is incorrect" });
-    }
-    else{
-      const token = generateToken({ email:user.email , username:user.username , id:user.id});
+
+    const user = await userModal.findOne({ email });
+    console.log(user);
+
+    if (user && (await bcrypt.compareSync(password, user.password))) {
+      const token = generateToken({ id: user._id });
       res.status(200).json({ message: "login successfully", token });
+    } else {
+      res
+        .status(500)
+        .send("user authentication failed , check your mail and password");
     }
-  });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };
 
 module.exports = {
