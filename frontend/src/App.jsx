@@ -9,6 +9,7 @@ import Missing from "./pages/Missing";
 import Profile from "./pages/Profile";
 import Home from './pages/Home'
 import Courses from "./component/Courses";
+import CourseDetail from './component/CourseDetail'
 export default function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/courses" element={<Courses/>}/>
+        <Route path="/courses/:id" element={<CourseDetail/>}/>
         <Route path="/profile"  element={<Profile/>} />
         </Route>
         <Route path="*" element={<Missing/>} />

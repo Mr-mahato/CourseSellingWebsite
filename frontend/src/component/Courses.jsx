@@ -26,7 +26,7 @@ function Courses() {
     );
   const courseElem = course.map((course) => {
     return (
-      <div className="CoursePagegrid-child">
+      <Link to={`/courses/${course._id}`} className="CoursePagegrid-child">
         <div className="CourseImage">
           <img src={`http://localhost:3000/${course.File}`} alt="This is the book" />
         </div>
@@ -37,7 +37,7 @@ function Courses() {
         <p>
           <b>${course.Price}</b>
         </p>
-      </div>
+      </Link>
     );
   });
 
