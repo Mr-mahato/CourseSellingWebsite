@@ -1,11 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./pages/Header";
 import HomeLayout from "./Layout/HomeLayout";
-import Signup from "./pages/Signup";
-import SignIn from "./pages/SignIn";
+import Signup from './component/Signup';
+import SignIn from "./component/SignIn";
 import { AuthProvider } from "./context/authContext";
-import Missing from "./pages/Missing";
+import Missing from "./component/Missing";
 import Profile from "./pages/Profile";
 import Home from './pages/Home'
 import Courses from "./component/Courses";
