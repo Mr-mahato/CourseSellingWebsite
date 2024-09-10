@@ -49,6 +49,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  z-index: 10;
 }
 .rightDesign img {
   height: 60vh;
@@ -178,12 +179,8 @@
 
 .courseContainer {
   display: grid;
-  border: solid 2px grey;
   padding: 10px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 300px;
   margin-bottom: 50px;
-  gap: 10px;
 }
 .courseChild {
   border: dashed 1px red;

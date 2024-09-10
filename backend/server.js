@@ -3,16 +3,21 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const {adminRouter} = require('./routes/AdminRoute')
+require('dotenv').config();
+const port = process.env.PORT || 3001
 
 app.use(express.static('uploads'));
 const {connectDb} = require('./db/dbConn')
-app.use(cors({origin:'http://localhost:5173'}));
+app.use(cors({origin:'http://localhost:5174'}));
 app.use(bodyParser.json());
+
+
+//  calling admin route
 app.use('/admin',adminRouter)
 
 
-app.listen(3000 , ()=>{
-    console.log('server started at port 3000');
+app.listen(port , ()=>{
+    console.log(`server started at port ${port}`);
     connectDb();
 
 })

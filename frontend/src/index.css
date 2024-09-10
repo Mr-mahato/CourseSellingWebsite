@@ -10,3 +10,7 @@
 .btn{
     @apply px-3 py-2 bg-green-400 rounded-lg text-neutral-800 hover:bg-green-400/80 font-bold
 }
+
+.inputField{
+    @apply px-2 py-2 rounded-md text-neutral-700 focus:ring-1 focus:ring-blue-600 required:border-red-500 outline-none bg-neutral-200
+}

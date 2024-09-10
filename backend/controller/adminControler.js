@@ -12,7 +12,7 @@ const signUpSchema = z.object({
   password: z.string().min(5),
 });
 
-const signInSchema = z.object({
+const LoginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(5),
 });
@@ -24,7 +24,7 @@ const signUp = async (req, res) => {
     const { error } = signUpSchema.safeParse({ username, email, password });
     if (error) {
       let err = JSON.parse(error.message);
-      res.status(400).json({ Error: err[0].message });
+      res.status(400).json({ Error: err });
       return;
     }
     const userExist = await userModal.findOne({ email });
@@ -56,7 +56,7 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log(password);
-    const { error } = signInSchema.safeParse({ email, password });
+    const { error } = LoginSchema.safeParse({ email, password });
     if (error) {
       let err = JSON.parse(error.message);
       res.status(400).json({ Error: err[0].message });

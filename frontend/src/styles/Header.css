@@ -10,7 +10,6 @@ nav{
     align-items: center;
     justify-content: space-around;
     background-color: #EAEDFA;
-    border-bottom: solid 2px #6377DB;
     font-family: "Roboto", sans-serif;
 }
 #title{
@@ -43,7 +42,7 @@ nav{
     gap: 1px;
     margin: px;
 }
-#signIn {
+#Login {
     padding: 1em;
     border: none;
     cursor: pointer;    
