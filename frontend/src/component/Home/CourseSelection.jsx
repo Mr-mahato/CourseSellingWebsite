@@ -10,7 +10,7 @@ function CourseSelection({ trackCarouselNum }) {
     return (
       <div
         key={ind}
-        className="flex shrink-0 w-[33%] px-2 box-border   flex-col justify-between gap-y-10 border rounded-md py-4"
+        className="flex shrink-0 w-[33%] px-2 transition-transform duration-600 flex-col justify-between gap-y-10 border rounded-md py-4"
         style={{ transform: `translateX(-${trackCarouselNum * 102}%)` }}
       >
         <div className="flex flex-col text-center justify-center items-center">

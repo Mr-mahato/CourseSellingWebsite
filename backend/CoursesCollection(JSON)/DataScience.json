@@ -1,0 +1,82 @@
+[
+    {
+        "title": "Introduction to Data Science",
+        "tutor_name": "Dr. Emily Clark",
+        "description": "A beginner's course to understand the basics of data science, including data manipulation, visualization, and statistical analysis.",
+        "price": 100,
+        "category": "Data Science",
+        "image_link": "https://example.com/image1.jpg"
+    },
+    {
+        "title": "Machine Learning A-Z",
+        "tutor_name": "Prof. John Doe",
+        "description": "Comprehensive course on machine learning algorithms, including supervised, unsupervised, and reinforcement learning.",
+        "price": 150,
+        "category": "Data Science",
+        "image_link": "https://example.com/image2.jpg"
+    },
+    {
+        "title": "Data Visualization with Python",
+        "tutor_name": "Ms. Sarah Lee",
+        "description": "Learn to create stunning visualizations using Python libraries like Matplotlib, Seaborn, and Plotly.",
+        "price": 80,
+        "category": "Data Science",
+        "image_link": "https://example.com/image3.jpg"
+    },
+    {
+        "title": "Deep Learning Fundamentals",
+        "tutor_name": "Dr. Anil Kapoor",
+        "description": "Dive into deep learning concepts, neural networks, and advanced AI techniques with hands-on projects.",
+        "price": 120,
+        "category": "Data Science",
+        "image_link": "https://example.com/image4.jpg"
+    },
+    {
+        "title": "Statistics for Data Science",
+        "tutor_name": "Prof. Jane Smith",
+        "description": "An essential course to master statistical methods and their application in data science.",
+        "price": 90,
+        "category": "Data Science",
+        "image_link": "https://example.com/image5.jpg"
+    },
+    {
+        "title": "Natural Language Processing",
+        "tutor_name": "Dr. Kevin Martinez",
+        "description": "Understand and implement NLP techniques to analyze and process human language data.",
+        "price": 130,
+        "category": "Data Science",
+        "image_link": "https://example.com/image6.jpg"
+    },
+    {
+        "title": "Big Data Analysis",
+        "tutor_name": "Mr. Robert Brown",
+        "description": "Learn the tools and techniques to process and analyze large-scale datasets in a distributed environment.",
+        "price": 140,
+        "category": "Data Science",
+        "image_link": "https://example.com/image7.jpg"
+    },
+    {
+        "title": "Time Series Analysis",
+        "tutor_name": "Ms. Linda Green",
+        "description": "Master time series forecasting techniques and their application in real-world scenarios.",
+        "price": 110,
+        "category": "Data Science",
+        "image_link": "https://example.com/image8.jpg"
+    },
+    {
+        "title": "Data Ethics and Privacy",
+        "tutor_name": "Dr. William Johnson",
+        "description": "Explore the ethical considerations and privacy concerns in data collection, analysis, and sharing.",
+        "price": 75,
+        "category": "Data Science",
+        "image_link": "https://example.com/image9.jpg"
+    },
+    {
+        "title": "Reinforcement Learning",
+        "tutor_name": "Prof. Anna White",
+        "description": "Advanced course on reinforcement learning, focusing on algorithms, applications, and case studies.",
+        "price": 160,
+        "category": "Data Science",
+        "image_link": "https://example.com/image10.jpg"
+    }
+]

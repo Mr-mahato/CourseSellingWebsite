@@ -1,0 +1,85 @@
+{
+    "courses": [
+      {
+        "title": "Introduction to UX Design",
+        "tutor_name": "Alice Johnson",
+        "description": "Learn the basics of UX design, including user research, wireframing, and prototyping.",
+        "price": 150,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/ux_intro.jpg"
+      },
+      {
+        "title": "UI Design for Beginners",
+        "tutor_name": "Bob Smith",
+        "description": "A beginner-friendly course on UI design, covering fundamental principles and tools.",
+        "price": 120,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/ui_design_beginners.jpg"
+      },
+      {
+        "title": "Advanced UX Strategies",
+        "tutor_name": "Carol White",
+        "description": "Dive deeper into UX design with advanced techniques for creating user-centered designs.",
+        "price": 200,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/advanced_ux.jpg"
+      },
+      {
+        "title": "Design Thinking for UI/UX",
+        "tutor_name": "David Green",
+        "description": "Explore the design thinking process and how it applies to creating effective UI/UX.",
+        "price": 180,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/design_thinking.jpg"
+      },
+      {
+        "title": "Wireframing Essentials",
+        "tutor_name": "Eva Brown",
+        "description": "Learn how to create effective wireframes to plan your user interfaces.",
+        "price": 130,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/wireframing.jpg"
+      },
+      {
+        "title": "Prototyping with Figma",
+        "tutor_name": "Frank Martin",
+        "description": "Master the art of prototyping using Figma, one of the leading design tools.",
+        "price": 170,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/prototyping_figma.jpg"
+      },
+      {
+        "title": "UX Research Methods",
+        "tutor_name": "Grace Wilson",
+        "description": "Understand various UX research methods to gather insights about your users.",
+        "price": 160,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/ux_research.jpg"
+      },
+      {
+        "title": "Visual Design for UI/UX",
+        "tutor_name": "Henry Lee",
+        "description": "Enhance your UI/UX designs with strong visual design principles.",
+        "price": 140,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/visual_design.jpg"
+      },
+      {
+        "title": "Mobile App Design",
+        "tutor_name": "Isabella Walker",
+        "description": "Learn how to design user-friendly mobile apps that meet modern usability standards.",
+        "price": 190,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/mobile_app_design.jpg"
+      },
+      {
+        "title": "Usability Testing in UX",
+        "tutor_name": "Jack Robinson",
+        "description": "A comprehensive guide to conducting usability tests to improve your designs.",
+        "price": 180,
+        "category": "UI/UX",
+        "image_url": "https://example.com/images/usability_testing.jpg"
+      }
+    ]
+  }
+  

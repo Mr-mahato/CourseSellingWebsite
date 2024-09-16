@@ -1,0 +1,84 @@
+{
+    "courses": [
+        {
+            "title": "Business Strategy Fundamentals",
+            "tutor": "Sarah Thompson",
+            "description": "Learn the core concepts of business strategy and how to apply them in real-world scenarios.",
+            "price": 99.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/business_strategy.jpg"
+        },
+        {
+            "title": "Marketing 101",
+            "tutor": "David Wilson",
+            "description": "An introduction to marketing principles, including market research, branding, and digital marketing.",
+            "price": 59.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/marketing_101.jpg"
+        },
+        {
+            "title": "Financial Accounting",
+            "tutor": "Emily Davis",
+            "description": "Understand the basics of financial accounting, including balance sheets, income statements, and cash flow.",
+            "price": 79.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/financial_accounting.jpg"
+        },
+        {
+            "title": "Project Management Essentials",
+            "tutor": "James Anderson",
+            "description": "Learn the key principles of project management and how to manage projects effectively.",
+            "price": 89.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/project_management.jpg"
+        },
+        {
+            "title": "Leadership and Management",
+            "tutor": "Olivia Martinez",
+            "description": "Develop your leadership and management skills to lead teams and organizations successfully.",
+            "price": 109.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/leadership_management.jpg"
+        },
+        {
+            "title": "Entrepreneurship Basics",
+            "tutor": "Michael Clark",
+            "description": "Learn the fundamentals of starting and running your own business.",
+            "price": 69.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/entrepreneurship_basics.jpg"
+        },
+        {
+            "title": "Human Resources Management",
+            "tutor": "Sophia Rodriguez",
+            "description": "Understand the key concepts of human resources management, including recruitment, training, and performance management.",
+            "price": 79.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/hr_management.jpg"
+        },
+        {
+            "title": "Business Analytics",
+            "tutor": "William Lewis",
+            "description": "Learn how to use data and analytics to make informed business decisions.",
+            "price": 99.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/business_analytics.jpg"
+        },
+        {
+            "title": "Sales Techniques",
+            "tutor": "Isabella Walker",
+            "description": "Master effective sales techniques to boost your sales performance.",
+            "price": 69.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/sales_techniques.jpg"
+        },
+        {
+            "title": "Business Communication",
+            "tutor": "Benjamin Hall",
+            "description": "Improve your business communication skills, including writing, speaking, and presenting.",
+            "price": 59.99,
+            "category": "Business",
+            "image_link": "https://example.com/images/business_communication.jpg"
+        }
+    ]
+}

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/CourseDetail.css";
 import { Rating, Button, TextField } from "@mui/material";
 import Razorpay from "razorpay";
+
+import { useParams } from "react-router-dom";
 import { Done, Favorite, AddShoppingCart } from "@mui/icons-material";
+import { CourseContext } from "../context/CourseContext";
 const learningPoints = [
   "Its best to learn now",
   "You will gain a lot of knowledge",
@@ -16,23 +19,45 @@ const learningPoints = [
 ];
 
 function CourseDetail() {
+  const [selectedCourse , setSelectedCourse] = useState(null);
+  const {course} = useContext(CourseContext);
+
+  const {id} = useParams();
+
+  
+
+  useEffect(()=>{
+
+    const filterOutCourse = ()=>{
+      let filteredCourse = course.filter((course,ind)=>{
+        return course._id == id
+      })
+      console.log(...filteredCourse);
+      setSelectedCourse(...filteredCourse);
+    }
+    if(course != null){
+      filterOutCourse();
+    }
+  },[course])
+
+  if(!selectedCourse){
+    return <h1 className="text-2xl font-bold  mt-20">Loading.....</h1>
+  }
   return (
     <div className="CourseDetail-container">
-      <UpperDiv />
-      <WhatyouLearn />
-      <CheckOut />
+       <UpperDiv selectedCourse={selectedCourse}/>
+      <WhatyouLearn selectedCourse={selectedCourse}/>
+      <CheckOut selectedCourse={selectedCourse}/> 
     </div>
   );
 }
 
-const UpperDiv = () => {
+const UpperDiv = ({selectedCourse}) => {
   return (
-    <div className="upperDiv-container">
+    <div className="upperDiv-container mt-10">
       <div className="innerDiv-container">
-        <h1>Lorem ipsum dolor sit amet.</h1>
-        <h2>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, facere.
-        </h2>
+        <h1>{selectedCourse.description}</h1>
+       
         <div className="ratingCont">
           <p style={{ color: "gold", fontSize: "18px" }}>
             <b>4</b>
@@ -41,7 +66,7 @@ const UpperDiv = () => {
           <p style={{ textDecoration: "underline" }}>( 842 ratings )</p>
           <p>2,585 students</p>
         </div>
-        <p>Created by paul R.King</p>
+        <p>Created by <i> {selectedCourse.tutor}</i></p>
       </div>
     </div>
   );
@@ -65,7 +90,7 @@ const WhatyouLearn = () => {
   );
 };
 
-const CheckOut = () => {
+const CheckOut = ({selectedCourse}) => {
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -132,7 +157,8 @@ const [text , setText] = useState('')
       />
 
       <div className="innerCheckout">
-        <h1>$499</h1>
+        <h1>{selectedCourse.title}</h1>
+        <h1 className="font-semibold">$ {selectedCourse.price}</h1>
         <div className="Buy-section">
           <Button
             variant="contained"

@@ -1,0 +1,84 @@
+{
+    "courses": [
+        {
+            "title": "Digital Marketing Fundamentals",
+            "tutor": "John Doe",
+            "description": "Learn the basics of digital marketing, including SEO, SEM, and social media marketing.",
+            "price": 99.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/digital_marketing_fundamentals.jpg"
+        },
+        {
+            "title": "SEO Mastery",
+            "tutor": "Jane Smith",
+            "description": "Master the art of search engine optimization to improve your website's visibility.",
+            "price": 79.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/seo_mastery.jpg"
+        },
+        {
+            "title": "Social Media Marketing",
+            "tutor": "Emily Johnson",
+            "description": "Learn how to create effective social media marketing campaigns on platforms like Facebook, Instagram, and Twitter.",
+            "price": 89.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/social_media_marketing.jpg"
+        },
+        {
+            "title": "Content Marketing Strategy",
+            "tutor": "Michael Brown",
+            "description": "Develop a content marketing strategy to attract and engage your target audience.",
+            "price": 69.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/content_marketing.jpg"
+        },
+        {
+            "title": "Email Marketing Campaigns",
+            "tutor": "Sarah Davis",
+            "description": "Learn how to create and manage successful email marketing campaigns.",
+            "price": 59.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/email_marketing.jpg"
+        },
+        {
+            "title": "Google Ads Certification",
+            "tutor": "David Wilson",
+            "description": "Get certified in Google Ads and learn how to create effective PPC campaigns.",
+            "price": 109.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/google_ads.jpg"
+        },
+        {
+            "title": "Analytics and Data Insights",
+            "tutor": "Laura Martinez",
+            "description": "Understand how to use analytics tools to gain insights and improve your marketing efforts.",
+            "price": 99.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/analytics_data.jpg"
+        },
+        {
+            "title": "Affiliate Marketing",
+            "tutor": "James Lee",
+            "description": "Learn how to set up and manage successful affiliate marketing programs.",
+            "price": 79.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/affiliate_marketing.jpg"
+        },
+        {
+            "title": "Video Marketing",
+            "tutor": "Olivia Harris",
+            "description": "Create compelling video content to engage your audience and promote your brand.",
+            "price": 89.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/video_marketing.jpg"
+        },
+        {
+            "title": "Mobile Marketing",
+            "tutor": "William Clark",
+            "description": "Learn how to reach your audience through mobile marketing strategies and techniques.",
+            "price": 69.99,
+            "category": "Digital Marketing",
+            "image_link": "https://example.com/images/mobile_marketing.jpg"
+        }
+    ]
+}

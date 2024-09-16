@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import api from "../Utils/ApiBaseurl";
+
 function Signup({setIsSignup}) {
   const [user, setUser] = useState({
     username: "",
@@ -15,11 +17,11 @@ function Signup({setIsSignup}) {
   };
 
   // sending the data to the backend for registration
-  const handelUserRegister = async () => {
+  const handelUserRegister = async (e) => {
+    e.preventDefault();
     console.log(user);
-
     try {
-      let resp = await axios.post("http://localhost:3001/admin/signup", user);
+      let resp = await api.post("admin/signup", user);
       console.log(resp);
     } catch (error) {
       console.log(error);
@@ -27,14 +29,12 @@ function Signup({setIsSignup}) {
   };
 
   return (
-      <div className="lg:w-[30%] md:w-[40%] w-[90%] mx-auto bg-neutral-600 z-30 border-2 flex flex-col    rounded-lg  px-3 py-10">
+      <form onSubmit={handelUserRegister} className=" z-30  flex flex-col  gap-2 rounded-lg  ">
         {/* Username input */}
-        <h1 className="self-start font-bold text-xl  underline text-blue-600 underline-offset-3">
-          Signup
-        </h1>
+      
 
         <div className="flex w-full flex-col gap-2  ">
-          <label className="text-lg text-neutral-100 mustField font-semibold  after:text-red-600" htmlFor="username">
+          <label className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600" htmlFor="username">
             Username
           </label>
           <input
@@ -51,7 +51,7 @@ function Signup({setIsSignup}) {
 
         <div className="flex w-full flex-col gap-2  ">
           <label
-            className="text-lg text-neutral-100 mustField font-semibold  after:text-red-600 mustField  after:text-gray-600"
+            className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600 mustField  after:text-gray-600"
             htmlFor="username"
           >
             Email
@@ -70,7 +70,7 @@ function Signup({setIsSignup}) {
         {/* password input */}
         <div className="flex w-full flex-col gap-2  ">
           <label
-            className="text-lg text-neutral-100 mustField font-semibold  after:text-red-600 mustField"
+            className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600 mustField"
             htmlFor="username"
           >
             Password
@@ -87,15 +87,14 @@ function Signup({setIsSignup}) {
         </div>
 
         {/* submit button */}
-        <div className="self-end mt-10">
-          <button onClick={handelUserRegister} className="btn">
+        <div className="">
+          <button onClick={handelUserRegister} className="w-full btn">
             Sign Up
           </button>
         </div>
 
-        <button onClick={()=>setIsSignup(false)} className="self-start bg-red-600 text-neutral-100 rounded-md font-semibold px-4 py-1">Close</button>
 
-      </div>
+      </form>
   );
 }
 

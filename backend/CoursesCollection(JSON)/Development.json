@@ -1,0 +1,85 @@
+{
+    "courses": [
+      {
+        "title": "Introduction to Python",
+        "tutor": "Alice Johnson",
+        "description": "Learn the basics of Python programming, including syntax, data types, and control flow.",
+        "price": 49.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/python_course.jpg"
+      },
+      {
+        "title": "Web Development Bootcamp",
+        "tutor": "John Smith",
+        "description": "A comprehensive guide to building responsive websites using HTML, CSS, and JavaScript.",
+        "price": 79.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/web_dev_bootcamp.jpg"
+      },
+      {
+        "title": "JavaScript Essentials",
+        "tutor": "Emma Brown",
+        "description": "Master JavaScript fundamentals and build dynamic web applications.",
+        "price": 59.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/js_essentials.jpg"
+      },
+      {
+        "title": "React for Beginners",
+        "tutor": "Michael Lee",
+        "description": "Learn to create interactive user interfaces with React.js from scratch.",
+        "price": 69.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/react_course.jpg"
+      },
+      {
+        "title": "Full-Stack Development",
+        "tutor": "Sophia Martinez",
+        "description": "Become a full-stack developer by learning both front-end and back-end technologies.",
+        "price": 99.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/full_stack.jpg"
+      },
+      {
+        "title": "Introduction to Machine Learning",
+        "tutor": "David Kim",
+        "description": "Understand the basics of machine learning and build your first models using Python.",
+        "price": 89.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/ml_intro.jpg"
+      },
+      {
+        "title": "Data Structures and Algorithms",
+        "tutor": "Olivia Williams",
+        "description": "Learn essential data structures and algorithms to improve your coding skills.",
+        "price": 74.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/data_structures.jpg"
+      },
+      {
+        "title": "Mobile App Development with Flutter",
+        "tutor": "James Wilson",
+        "description": "Create cross-platform mobile apps using Flutter and Dart.",
+        "price": 79.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/flutter_course.jpg"
+      },
+      {
+        "title": "Node.js and Express.js",
+        "tutor": "Mia Davis",
+        "description": "Build scalable server-side applications using Node.js and Express.js.",
+        "price": 64.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/node_express.jpg"
+      },
+      {
+        "title": "Introduction to Cybersecurity",
+        "tutor": "Daniel Clark",
+        "description": "Learn the fundamentals of cybersecurity and how to protect systems from threats.",
+        "price": 69.99,
+        "category": "Development",
+        "image_link": "https://example.com/images/cybersecurity.jpg"
+      }
+    ]
+  }
+  

@@ -8,9 +8,17 @@
 }
 
 .btn{
-    @apply px-3 py-2 bg-green-400 rounded-lg text-neutral-800 hover:bg-green-400/80 font-bold
+    @apply px-3 py-2 bg-neutral-800 rounded-lg text-neutral-100 hover:bg-neutral-800/80 font-bold
 }
 
 .inputField{
-    @apply px-2 py-2 rounded-md text-neutral-700 focus:ring-1 focus:ring-blue-600 required:border-red-500 outline-none bg-neutral-200
+    @apply px-2 py-2 rounded-md text-neutral-700 focus:ring-2 focus:ring-gray-400 required:border-red-500 outline-none bg-neutral-200
+}
+
+.loginModel{
+    @apply flex-1 text-center cursor-pointer
+}
+
+.contactInput{
+    @apply px-2 py-2 rounded-md text-neutral-700 focus:ring-2 focus:ring-gray-400  outline-none bg-neutral-100 border
 }

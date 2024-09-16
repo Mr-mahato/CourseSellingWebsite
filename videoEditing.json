@@ -1,0 +1,84 @@
+{
+    "courses": [
+        {
+            "title": "Introduction to Video Editing",
+            "tutor": "Alice Johnson",
+            "description": "Learn the basics of video editing, including cutting, transitions, and basic effects.",
+            "price": 79.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/intro_video_editing.jpg"
+        },
+        {
+            "title": "Advanced Premiere Pro Techniques",
+            "tutor": "Bob Smith",
+            "description": "Master advanced techniques in Adobe Premiere Pro to create professional-quality videos.",
+            "price": 99.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/advanced_premiere_pro.jpg"
+        },
+        {
+            "title": "Final Cut Pro X Essentials",
+            "tutor": "Carol Davis",
+            "description": "Learn the essential features of Final Cut Pro X for efficient video editing.",
+            "price": 89.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/final_cut_pro.jpg"
+        },
+        {
+            "title": "Color Grading with DaVinci Resolve",
+            "tutor": "David Wilson",
+            "description": "Understand the principles of color grading and how to use DaVinci Resolve for professional color correction.",
+            "price": 109.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/color_grading.jpg"
+        },
+        {
+            "title": "Motion Graphics in After Effects",
+            "tutor": "Emma Brown",
+            "description": "Learn how to create stunning motion graphics using Adobe After Effects.",
+            "price": 119.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/motion_graphics.jpg"
+        },
+        {
+            "title": "Editing for YouTube",
+            "tutor": "Frank Harris",
+            "description": "Discover the best practices for editing videos specifically for YouTube.",
+            "price": 69.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/editing_youtube.jpg"
+        },
+        {
+            "title": "Sound Design for Video",
+            "tutor": "Grace Lee",
+            "description": "Learn how to create and edit sound for video projects to enhance the viewer's experience.",
+            "price": 79.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/sound_design.jpg"
+        },
+        {
+            "title": "Editing Documentaries",
+            "tutor": "Henry Martinez",
+            "description": "Understand the unique challenges and techniques involved in editing documentary films.",
+            "price": 99.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/editing_documentaries.jpg"
+        },
+        {
+            "title": "Visual Effects with After Effects",
+            "tutor": "Isabella Walker",
+            "description": "Learn how to create and integrate visual effects into your video projects using Adobe After Effects.",
+            "price": 129.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/visual_effects.jpg"
+        },
+        {
+            "title": "Editing Music Videos",
+            "tutor": "Jack Thompson",
+            "description": "Master the art of editing music videos to create engaging and dynamic content.",
+            "price": 89.99,
+            "category": "Video Editing",
+            "image_link": "https://example.com/images/editing_music_videos.jpg"
+        }
+    ]
+}

@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../styles/Header.css";
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-</style>;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpen, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,6 +12,10 @@ function Header() {
   const [userLoginModel, setUserLoginModel] = useState(false);
   const [sideBarModel, setSideBarModel] = useState(false);
   const [scrolly, setScrolly] = useState(0);
+
+  const {setUser , isAuth , setIsAuth} = useContext(AuthContext)
+
+  
 
   useEffect(() => {
     const handelScroll = () => {
@@ -44,7 +45,7 @@ function Header() {
   return (
     <div>
       <nav
-        className={`fixed w-full top-0 z-20 ${
+        className={`fixed w-full z-20 top-0 left-0 right-0 ${
           scrolly < 500 && "border-b-2 border-blue-600"
         }`}
       >
@@ -125,18 +126,17 @@ function Header() {
             </aside>
           )}
         </div>
-        {/* #TODO:add login and signup logic here  */}
-        <div>
+       {!isAuth && <div className="md:block hidden">
           <button
             onClick={() => setUserLoginModel(!userLoginModel)}
-            className="bg-sky-300 px-3 py-2 rounded-md text-white font-semibold"
+            className="bg-blue-600 px-3 py-2 rounded-md text-white font-semibold"
           >
             Login
           </button>
-        </div>
+        </div>}
         {/* login signup */}
 
-        {/* {isAuthenticated && (
+        {isAuth && (
         <div className="userLoggedHandel">
           <Avatar
             sx={{ cursor: "pointer" }}
@@ -159,9 +159,9 @@ function Header() {
             <MenuItem onClick={handelLogOut}>Logout</MenuItem>
           </Menu>
         </div>
-      )} */}
+      )}
       </nav>
-      {userLoginModel && <UserLoginModel />}
+      {userLoginModel && <UserLoginModel setUserLoginModel={setUserLoginModel}/>}
     </div>
   );
 }

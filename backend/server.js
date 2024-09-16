@@ -8,12 +8,16 @@ const port = process.env.PORT || 3001
 
 app.use(express.static('uploads'));
 const {connectDb} = require('./db/dbConn')
-app.use(cors({origin:'http://localhost:5174'}));
+
+
+app.use(cors());
 app.use(bodyParser.json());
 
 
 //  calling admin route
 app.use('/admin',adminRouter)
+
+
 
 
 app.listen(port , ()=>{

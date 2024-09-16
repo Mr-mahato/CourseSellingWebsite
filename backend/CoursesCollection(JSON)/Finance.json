@@ -1,0 +1,84 @@
+{
+    "courses": [
+        {
+            "title": "Introduction to Corporate Finance",
+            "tutor": "John Smith",
+            "description": "Learn the basics of corporate finance, including financial statements, cash flow, and capital budgeting.",
+            "price": 99.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/corporate_finance.jpg"
+        },
+        {
+            "title": "Investment Banking 101",
+            "tutor": "Jane Doe",
+            "description": "An overview of investment banking, including mergers and acquisitions, IPOs, and financial modeling.",
+            "price": 119.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/investment_banking.jpg"
+        },
+        {
+            "title": "Personal Finance Management",
+            "tutor": "Robert Brown",
+            "description": "Learn how to manage your personal finances, including budgeting, saving, and investing.",
+            "price": 49.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/personal_finance.jpg"
+        },
+        {
+            "title": "Financial Markets and Instruments",
+            "tutor": "Emily White",
+            "description": "Understand the different types of financial markets and instruments, including stocks, bonds, and derivatives.",
+            "price": 89.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/financial_markets.jpg"
+        },
+        {
+            "title": "Risk Management in Finance",
+            "tutor": "Michael Green",
+            "description": "Learn the principles of risk management and how to apply them in financial contexts.",
+            "price": 79.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/risk_management.jpg"
+        },
+        {
+            "title": "Financial Modeling and Valuation",
+            "tutor": "Laura Black",
+            "description": "Develop your skills in financial modeling and valuation techniques used in finance.",
+            "price": 129.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/financial_modeling.jpg"
+        },
+        {
+            "title": "Behavioral Finance",
+            "tutor": "David Harris",
+            "description": "Explore the psychological factors that influence financial decision-making.",
+            "price": 69.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/behavioral_finance.jpg"
+        },
+        {
+            "title": "International Finance",
+            "tutor": "Sophia Martinez",
+            "description": "Learn about the financial systems and markets in a global context.",
+            "price": 99.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/international_finance.jpg"
+        },
+        {
+            "title": "Quantitative Finance",
+            "tutor": "James Wilson",
+            "description": "Understand the quantitative methods used in finance, including statistics and econometrics.",
+            "price": 109.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/quantitative_finance.jpg"
+        },
+        {
+            "title": "Financial Planning and Analysis",
+            "tutor": "Olivia Brown",
+            "description": "Learn the techniques used in financial planning and analysis to support business decisions.",
+            "price": 89.99,
+            "category": "Finance",
+            "image_link": "https://example.com/images/financial_planning.jpg"
+        }
+    ]
+}

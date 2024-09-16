@@ -1,0 +1,84 @@
+{
+    "courses": [
+        {
+            "title": "Introduction to Graphic Design",
+            "tutor": "Alice Johnson",
+            "description": "Learn the basics of graphic design, including color theory, typography, and layout.",
+            "price": 79.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/intro_graphic_design.jpg"
+        },
+        {
+            "title": "Photoshop for Beginners",
+            "tutor": "Bob Smith",
+            "description": "Master the fundamentals of Adobe Photoshop and start creating stunning graphics.",
+            "price": 59.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/photoshop_beginners.jpg"
+        },
+        {
+            "title": "Advanced Illustrator Techniques",
+            "tutor": "Carol Davis",
+            "description": "Take your Adobe Illustrator skills to the next level with advanced techniques and tips.",
+            "price": 99.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/advanced_illustrator.jpg"
+        },
+        {
+            "title": "Logo Design Masterclass",
+            "tutor": "David Wilson",
+            "description": "Learn how to create professional logos that stand out and represent brands effectively.",
+            "price": 89.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/logo_design.jpg"
+        },
+        {
+            "title": "Web Design Essentials",
+            "tutor": "Emma Brown",
+            "description": "Understand the principles of web design and how to create visually appealing websites.",
+            "price": 69.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/web_design.jpg"
+        },
+        {
+            "title": "Typography for Designers",
+            "tutor": "Frank Harris",
+            "description": "Explore the art of typography and how to use it effectively in your designs.",
+            "price": 49.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/typography.jpg"
+        },
+        {
+            "title": "Digital Illustration",
+            "tutor": "Grace Lee",
+            "description": "Learn how to create beautiful digital illustrations using various tools and techniques.",
+            "price": 79.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/digital_illustration.jpg"
+        },
+        {
+            "title": "UX/UI Design Fundamentals",
+            "tutor": "Henry Martinez",
+            "description": "Understand the basics of UX/UI design and how to create user-friendly interfaces.",
+            "price": 99.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/ux_ui_design.jpg"
+        },
+        {
+            "title": "Motion Graphics with After Effects",
+            "tutor": "Isabella Walker",
+            "description": "Learn how to create stunning motion graphics using Adobe After Effects.",
+            "price": 109.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/motion_graphics.jpg"
+        },
+        {
+            "title": "Creative Poster Design",
+            "tutor": "Jack Thompson",
+            "description": "Master the art of poster design and create eye-catching posters for various purposes.",
+            "price": 59.99,
+            "category": "Graphic Design",
+            "image_link": "https://example.com/images/poster_design.jpg"
+        }
+    ]
+}

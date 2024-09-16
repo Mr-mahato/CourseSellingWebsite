@@ -21,6 +21,7 @@ const signUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
     // zod validation
+    console.log(req.body)
     const { error } = signUpSchema.safeParse({ username, email, password });
     if (error) {
       let err = JSON.parse(error.message);
@@ -55,7 +56,6 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(password);
     const { error } = LoginSchema.safeParse({ email, password });
     if (error) {
       let err = JSON.parse(error.message);
@@ -64,11 +64,10 @@ const login = async (req, res) => {
     }
 
     const user = await userModal.findOne({ email });
-    console.log(user);
 
     if (user && (await bcrypt.compareSync(password, user.password))) {
       const token = generateToken({ id: user._id });
-      res.status(200).json({ message: "login successfully", token });
+      res.status(200).json({ message: "login successfully", token , status:"success" , user:{username:user.username , email:user.email}});
     } else {
       res
         .status(500)

@@ -1,39 +1,43 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext, useState } from "react";
+import api from "../Utils/ApiBaseurl";
+import { AuthContext } from "../context/authContext";
 function Login({setIsLogin}) {
-  const [user, setUser] = useState({
+  const {setUser , isAuth , setIsAuth} = useContext(AuthContext)
+  const [user, setUserInfo] = useState({
     email: "",
     password: "",
   });
 
   const handelFormChange = (e) => {
-    setUser({
+    setUserInfo({
       ...user,
       [e.target.name]: e.target.value,
     });
   };
-  const handelUserLogin = async () => {
+  const handelUserLogin = async (e) => {
+    e.preventDefault();
     try {
-      let resp = await axios.post("http://localhost:3001/admin/login", {
-        user,
+      let {data} = await api.post("admin/login", {
+        ...user,
       });
-      console.log(resp);
+      const {token , message , user} = data;
+      localStorage.setItem('token',JSON.stringify(token));
+      setUser(user);
+      setIsAuth(true);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="lg:w-[30%] md:w-[40%] w-[90%] mx-auto bg-neutral-600 z-30 border-2 flex flex-col    rounded-lg  px-3 py-10  ">
-      <h1 className="self-start font-bold text-xl pb-10  underline text-blue-600 ">
-        Login
-      </h1>
+    <form onSubmit={handelUserLogin} className="flex flex-col gap-2 w-full">
+     
 
       {/* email input */}
 
       <div className="flex w-full flex-col gap-2  ">
         <label
-          className="text-lg text-neutral-100 mustField font-semibold  after:text-red-600"
+          className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600"
           htmlFor="username"
         >
           Email
@@ -52,7 +56,7 @@ function Login({setIsLogin}) {
       {/* password input */}
       <div className="flex w-full flex-col gap-2  ">
         <label
-          className="text-lg text-neutral-100 mustField after:text-red-600"
+          className="text-lg text-neutral-800 font-semibold mustField after:text-red-600"
           htmlFor="username"
         >
           Password
@@ -68,14 +72,12 @@ function Login({setIsLogin}) {
       </div>
 
       {/* submit button */}
-      <div className="self-end mt-10">
-        <button onClick={handelUserLogin} className="btn ">
-          Login
+      <div className="bg-neutral-300">
+        <button  className="btn w-full">
+          Log In
         </button>
       </div>
-
-        <button onClick={()=>setIsLogin(false)} className="self-start bg-red-600 text-neutral-100 rounded-md font-semibold px-4 py-1">Close</button>
-    </div>
+    </form>
   );
 }
 

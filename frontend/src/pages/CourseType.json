@@ -1,0 +1,34 @@
+[
+  {
+    "name": "UI/UX",
+    "image": "https://nyusoft.com/wp-content/themes/twentytwentyone-child/images/services/UI-UX-design-services/banner-image-ui-ux.png"
+  },
+  {
+    "name": "Development",
+    "image": "https://cdn-icons-png.freepik.com/512/8087/8087650.png"
+  },
+  {
+    "name": "Data Science",
+    "image": "https://cdn-icons-png.flaticon.com/512/4824/4824797.png"
+  },
+  {
+    "name": "Business",
+    "image": "https://cdn-icons-png.flaticon.com/512/1933/1933920.png"
+  },
+  {
+    "name": "Financial",
+    "image": "https://cdn-icons-png.flaticon.com/512/4541/4541461.png"
+  },
+  {
+    "name": "Graphic Design",
+    "image": "https://static.thenounproject.com/png/1049235-200.png"
+  },
+  {
+    "name": "Digital Marketing",
+    "image": "https://cdn-icons-png.flaticon.com/512/4322/4322231.png"
+  },
+  {
+    "name": "Video Editing",
+    "image": "https://cdn-icons-png.flaticon.com/512/6979/6979672.png"
+  }
+]

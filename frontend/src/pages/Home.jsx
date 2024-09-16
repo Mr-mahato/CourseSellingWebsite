@@ -188,7 +188,7 @@ function Home() {
         </div>
 
         {/* container width 90% */}
-        <div className="courseContainer w-full overflow-hidden box-border border-2">
+        <div className="courseContainer w-full overflow-hidden ">
           <CourseSelection trackCarouselNum={trackCarouselNum} />
         </div>
 
