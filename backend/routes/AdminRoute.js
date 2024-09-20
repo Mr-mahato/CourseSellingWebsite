@@ -21,6 +21,7 @@ const upload = multer({storage:storage})
 const {jwtAuthenticate , handelImageUpload} = require('../util/jwtAuthenticate');
 const {getUserInfo}  = require('../util/getuserinfo');
 const {createCourse , getCourse , updateCourse} = require('../controller/adminCreateCourse');
+
 adminRouter.post('/signup' ,signUp)
 adminRouter.post('/login' ,login)
 

@@ -1,22 +1,11 @@
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const fs = require("fs");
 const { generateToken } = require("../util/generateToken");
-const z = require("zod");
-
+const { signUpSchema , LoginSchema } = require( "../util/SignupSchema"); 
 const { userModal } = require("../modal/userModal");
 // zod validatin for the userSchema
-const signUpSchema = z.object({
-  username: z.string(),
-  email: z.string().email(),
-  password: z.string().min(5),
-});
 
-const LoginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(5),
-});
 
+// SIGNUP
 const signUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -53,6 +42,7 @@ const signUp = async (req, res) => {
   }
 };
 
+// LOGIN
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -66,11 +56,27 @@ const login = async (req, res) => {
     const user = await userModal.findOne({ email });
 
     if (user && (await bcrypt.compareSync(password, user.password))) {
+
+      // user found save in express session
+      req.session.user = {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+      }
       const token = generateToken({ id: user._id });
-      res.status(200).json({ message: "login successfully", token , status:"success" , user:{username:user.username , email:user.email}});
+
+      // token storing in HTTPonly Cookie
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
+
+      res.status(202).json({ message: "login successfully" , status:"success"});
     } else {
       res
-        .status(500)
+        .status(403)
         .send("user authentication failed , check your mail and password");
     }
   } catch (error) {

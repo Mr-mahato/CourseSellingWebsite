@@ -1,38 +1,54 @@
 import React, { useContext, useState } from "react";
 import api from "../Utils/ApiBaseurl";
 import { AuthContext } from "../context/authContext";
-function Login({setIsLogin}) {
-  const {setUser , isAuth , setIsAuth} = useContext(AuthContext)
-  const [user, setUserInfo] = useState({
+import swal from "sweetalert";
+
+function Login({ setUserLoginModel }) {
+  const { setUser, isAuth, setIsAuth } = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
 
   const handelFormChange = (e) => {
     setUserInfo({
-      ...user,
+      ...userInfo,
       [e.target.name]: e.target.value,
     });
   };
+  // #TODO:add the login info to the session in the backend
   const handelUserLogin = async (e) => {
     e.preventDefault();
     try {
-      let {data} = await api.post("admin/login", {
-        ...user,
+      let { data } = await api.post("admin/login", {
+        ...userInfo,
       });
-      const {token , message , user} = data;
-      localStorage.setItem('token',JSON.stringify(token));
-      setUser(user);
+      const { message } = data;
+      swal({
+        title: "Success!",
+        text: message || "Your account has been created successfully.",
+        icon: "success",
+        button: "OK",
+      });
       setIsAuth(true);
-    } catch (error) {
-      console.log(error);
+      setUserLoginModel(false);
+
+      let response = await api.get('/user/user-session');
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+      swal({
+        title: "Error!",
+        text:
+          err.response || "Your account has been created successfully.",
+        icon: "error",
+        button: "OK",
+      });
     }
   };
 
   return (
     <form onSubmit={handelUserLogin} className="flex flex-col gap-2 w-full">
-     
-
       {/* email input */}
 
       <div className="flex w-full flex-col gap-2  ">
@@ -46,7 +62,7 @@ function Login({setIsLogin}) {
           className="inputField"
           type="email"
           required
-          value={user.email}
+          value={userInfo.email}
           onChange={handelFormChange}
           placeholder="Enter your Email..."
           name="email"
@@ -64,7 +80,7 @@ function Login({setIsLogin}) {
         <input
           className="inputField"
           type="password"
-          value={user.password}
+          value={userInfo.password}
           onChange={handelFormChange}
           placeholder="•••••••••"
           name="password"
@@ -73,9 +89,7 @@ function Login({setIsLogin}) {
 
       {/* submit button */}
       <div className="bg-neutral-300">
-        <button  className="btn w-full">
-          Log In
-        </button>
+        <button className="btn w-full">Log In</button>
       </div>
     </form>
   );

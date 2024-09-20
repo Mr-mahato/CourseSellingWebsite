@@ -1,7 +1,5 @@
-const express = require("express");
 
 const {courseModal} = require('../modal/courseModal');
-const { userModal } = require("../modal/userModal");
 /*Body: { title: 'course title', description: 'course description', price: 100, imageLink: 'https://linktoimage.com', published: true }*/
 
 // here is little work is left to do ,

@@ -13,9 +13,7 @@ function Header() {
   const [sideBarModel, setSideBarModel] = useState(false);
   const [scrolly, setScrolly] = useState(0);
 
-  const {setUser , isAuth , setIsAuth} = useContext(AuthContext)
-
-  
+  const { setUser, isAuth, setIsAuth } = useContext(AuthContext);
 
   useEffect(() => {
     const handelScroll = () => {
@@ -27,15 +25,6 @@ function Header() {
       window.removeEventListener("scroll", handelScroll);
     };
   }, []);
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handelLogOut = () => {
     localStorage.removeItem("user");
@@ -126,42 +115,28 @@ function Header() {
             </aside>
           )}
         </div>
-       {!isAuth && <div className="md:block hidden">
-          <button
-            onClick={() => setUserLoginModel(!userLoginModel)}
-            className="bg-blue-600 px-3 py-2 rounded-md text-white font-semibold"
-          >
-            Login
-          </button>
-        </div>}
-        {/* login signup */}
+        {!isAuth && (
+          <div className="md:block hidden">
+            <button
+              onClick={() => setUserLoginModel(!userLoginModel)}
+              className="bg-blue-600 px-3 py-2 rounded-md text-white font-semibold"
+            >
+              Login
+            </button>
+          </div>
+        )}
 
+{/* #TODO:Create a simple userdashboar where user can logout and perform other functionality */}
         {isAuth && (
-        <div className="userLoggedHandel">
-          <Avatar
-            sx={{ cursor: "pointer" }}
-            src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
-            alt="this is the profile"
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-          />
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>
-              <Link to="/profile">Profile</Link>
-            </MenuItem>
-            <MenuItem onClick={handelLogOut}>Logout</MenuItem>
-          </Menu>
-        </div>
-      )}
+          <div className="md:block hidden">
+           <img className="w-[2rem] h-[2rem] object-cover object-contain" src="https://w7.pngwing.com/pngs/860/503/png-transparent-computer-icons-person-pion-black-desktop-wallpaper-share-icon.png" alt="this is the user" />
+          </div>
+        )}
+        {/* login signup */}
       </nav>
-      {userLoginModel && <UserLoginModel setUserLoginModel={setUserLoginModel}/>}
+      {!isAuth && userLoginModel && (
+        <UserLoginModel setUserLoginModel={setUserLoginModel} />
+      )}
     </div>
   );
 }

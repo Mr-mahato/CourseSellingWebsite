@@ -10,8 +10,6 @@ import Courses from "./pages/Courses/Courses";
 import CourseDetail from "./component/CourseDetail";
 import Contact from "./pages/Contact/Contact.jsx";
 export default function App() {
-console.log("hello")
-
   return (
     <div>
       <CourseProvider>

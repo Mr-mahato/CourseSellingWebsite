@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import api from "../Utils/ApiBaseurl";
+import swal from "sweetalert";
 
-function Signup({setIsSignup}) {
+// #TODO:maintain the RBA here -->Role based authentication
+function Signup({ setLoginBtn }) {
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -21,80 +22,98 @@ function Signup({setIsSignup}) {
     e.preventDefault();
     console.log(user);
     try {
-      let resp = await api.post("admin/signup", user);
-      console.log(resp);
-    } catch (error) {
-      console.log(error);
+      let { data } = await api.post("admin/signup", user);
+
+      const { token, message } = { data };
+      swal({
+        title: "Success!",
+        text: message || "Your account has been created successfully.",
+        icon: "success",
+        button: "OK",
+      });
+      setLoginBtn(true);
+    } catch (err) {
+      swal({
+        title: "Error!",
+        text:
+          err.response.data.message ||
+          "Oops!!.",
+        icon: "error",
+        button: "OK",
+      });
     }
   };
 
   return (
-      <form onSubmit={handelUserRegister} className=" z-30  flex flex-col  gap-2 rounded-lg  ">
-        {/* Username input */}
-      
+    <form
+      onSubmit={handelUserRegister}
+      className=" z-30  flex flex-col  gap-2 rounded-lg  "
+    >
+      {/* Username input */}
 
-        <div className="flex w-full flex-col gap-2  ">
-          <label className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600" htmlFor="username">
-            Username
-          </label>
-          <input
-            className="inputField"
-            type="text"
-            value={user.username}
-            placeholder="Enter your username..."
-            name="username"
-            onChange={handelFormChange}
-          />
-        </div>
+      <div className="flex w-full flex-col gap-2  ">
+        <label
+          className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600"
+          htmlFor="username"
+        >
+          Username
+        </label>
+        <input
+          className="inputField"
+          type="text"
+          value={user.username}
+          placeholder="Enter your username..."
+          name="username"
+          onChange={handelFormChange}
+        />
+      </div>
 
-        {/* email input */}
+      {/* email input */}
 
-        <div className="flex w-full flex-col gap-2  ">
-          <label
-            className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600 mustField  after:text-gray-600"
-            htmlFor="username"
-          >
-            Email
-          </label>
-          <input
-            className="inputField"
-            type="email"
-            required
-            value={user.email}
-            onChange={handelFormChange}
-            placeholder="Enter your Email..."
-            name="email"
-          />
-        </div>
+      <div className="flex w-full flex-col gap-2  ">
+        <label
+          className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600 mustField  "
+          htmlFor="username"
+        >
+          Email
+        </label>
+        <input
+          className="inputField"
+          type="email"
+          required
+          value={user.email}
+          onChange={handelFormChange}
+          placeholder="Enter your Email..."
+          name="email"
+        />
+      </div>
 
-        {/* password input */}
-        <div className="flex w-full flex-col gap-2  ">
-          <label
-            className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600 mustField"
-            htmlFor="username"
-          >
-            Password
-          </label>
-          <input
-            className="inputField"
-            type="password"
-            required
-            value={user.password}
-            onChange={handelFormChange}
-            placeholder="•••••••••"
-            name="password"
-          />
-        </div>
+      {/* password input */}
+      <div className="flex w-full flex-col gap-2  ">
+        <label
+          className="text-lg text-neutral-800 mustField font-semibold  after:text-red-600 mustField"
+          htmlFor="username"
+        >
+          Password
+        </label>
+        <input
+          className="inputField"
+          type="text"
+          required
+          value={user.password}
+          onChange={handelFormChange}
+          placeholder="•••••••••"
+          name="password"
+        />
+      </div>
 
-        {/* submit button */}
-        <div className="">
-          <button onClick={handelUserRegister} className="w-full btn">
-            Sign Up
-          </button>
-        </div>
-
-
-      </form>
+      {/* submit button */}
+      <div className="">
+        <button onClick={handelUserRegister} className="w-full btn">
+          Sign Up
+        </button>
+      </div>
+    </form>
   );
 }
 

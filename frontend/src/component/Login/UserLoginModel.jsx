@@ -7,6 +7,7 @@ function UserLoginModel({setUserLoginModel}) {
   const [isModalVisible, setIsModalVisible] = useState(true);
 
   const handleClickOutside = (event) => {
+    
     if (event.target.classList.contains("modal-overlay")) {
       setIsModalVisible(false);
       setUserLoginModel(false);
@@ -32,7 +33,7 @@ function UserLoginModel({setUserLoginModel}) {
         </div>
 
         
-        {loginBtn ? <Login /> : <Signup />}
+        {loginBtn ? <Login setUserLoginModel={setUserLoginModel}/> : <Signup setLoginBtn={setLoginBtn}/>}
       </div>
     </div>
   );
