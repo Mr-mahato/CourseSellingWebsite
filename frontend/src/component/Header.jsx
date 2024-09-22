@@ -1,18 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../styles/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookOpen, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookOpen, faBars,faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/authContext";
 import UserLoginModel from "./Login/UserLoginModel";
+import DialogModel from "../Model/DialogModel";
 
 function Header() {
   const [userLoginModel, setUserLoginModel] = useState(false);
   const [sideBarModel, setSideBarModel] = useState(false);
   const [scrolly, setScrolly] = useState(0);
-
+  const [dialogModelShow , setDialogModelShow] = useState(false);
   const { setUser, isAuth, setIsAuth } = useContext(AuthContext);
 
   useEffect(() => {
@@ -126,14 +127,14 @@ function Header() {
           </div>
         )}
 
-{/* #TODO:Create a simple userdashboar where user can logout and perform other functionality */}
         {isAuth && (
-          <div className="md:block hidden">
-           <img className="w-[2rem] h-[2rem] object-cover object-contain" src="https://w7.pngwing.com/pngs/860/503/png-transparent-computer-icons-person-pion-black-desktop-wallpaper-share-icon.png" alt="this is the user" />
+          <div onClick={()=>setDialogModelShow(!dialogModelShow)} className="md:block hidden">
+            <FontAwesomeIcon  icon={faUser} className="cursor-pointer" style={{height:'1.4rem'}} />
           </div>
         )}
         {/* login signup */}
       </nav>
+      {dialogModelShow && <DialogModel setDialogModelShow={setDialogModelShow}/>}
       {!isAuth && userLoginModel && (
         <UserLoginModel setUserLoginModel={setUserLoginModel} />
       )}

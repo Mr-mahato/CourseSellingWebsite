@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import api from "../Utils/ApiBaseurl";
-import { AuthContext } from "../context/authContext";
+import api from "../../Utils/ApiBaseurl";
+import { AuthContext } from "../../context/authContext";
 import swal from "sweetalert";
 
 function Login({ setUserLoginModel }) {
@@ -16,14 +16,15 @@ function Login({ setUserLoginModel }) {
       [e.target.name]: e.target.value,
     });
   };
-  // #TODO:add the login info to the session in the backend
   const handelUserLogin = async (e) => {
     e.preventDefault();
     try {
       let { data } = await api.post("admin/login", {
         ...userInfo,
       });
-      const { message } = data;
+      const { message , user } = data;
+      setUser(user);
+      localStorage.setItem("user", JSON.stringify(user));
       swal({
         title: "Success!",
         text: message || "Your account has been created successfully.",
@@ -32,9 +33,6 @@ function Login({ setUserLoginModel }) {
       });
       setIsAuth(true);
       setUserLoginModel(false);
-
-      let response = await api.get('/user/user-session');
-      console.log(response);
     } catch (err) {
       console.log(err);
       swal({

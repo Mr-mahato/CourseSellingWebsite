@@ -9,13 +9,17 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
-  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
 
-
- 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setIsAuth(true);
+    }
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, isAuth, setIsAuth  }}>
+    <AuthContext.Provider value={{ user, setUser, isAuth, setIsAuth }}>
       {children}
     </AuthContext.Provider>
   );

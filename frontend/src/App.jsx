@@ -4,7 +4,7 @@ import HomeLayout from "./Layout/HomeLayout";
 import { AuthProvider } from "./context/authContext";
 import { CourseProvider } from "./context/CourseContext.jsx";
 import Missing from "./component/Missing";
-import Profile from "./pages/Profile";
+import InstructorProfile from "./pages/InstructorProfile.jsx";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses/Courses";
 import CourseDetail from "./component/CourseDetail";
@@ -19,8 +19,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/courses/:id" element={<CourseDetail />} />
-              <Route path="/profile" element={<Profile />} />
               <Route path="/contact" element={<Contact/>}/>
+              <Route path="/profile" element={<InstructorProfile/>}/>
             </Route>
             <Route path="*" element={<Missing />} />
           </Routes>

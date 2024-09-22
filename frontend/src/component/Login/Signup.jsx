@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import api from "../Utils/ApiBaseurl";
+import api from "../../Utils/ApiBaseurl";
 import swal from "sweetalert";
 
-// #TODO:maintain the RBA here -->Role based authentication
 function Signup({ setLoginBtn }) {
   const [user, setUser] = useState({
     username: "",

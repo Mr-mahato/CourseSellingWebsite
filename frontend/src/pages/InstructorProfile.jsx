@@ -20,7 +20,7 @@ import {
 import {Close} from '@mui/icons-material'
 import { useState } from "react";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-function Profile() {
+function InstructorProfile() {
   const { user } = useContext(AuthContext);
   if (!user) return <>Loading...</>;
   return (
@@ -52,7 +52,7 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default InstructorProfile;
 
 const style = {
   position: "absolute",

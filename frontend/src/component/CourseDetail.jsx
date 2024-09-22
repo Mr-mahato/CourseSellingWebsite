@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/CourseDetail.css";
 import { Rating, Button, TextField } from "@mui/material";
-import Razorpay from "razorpay";
 
 import { useParams } from "react-router-dom";
 import { Done, Favorite, AddShoppingCart } from "@mui/icons-material";
 import { CourseContext } from "../context/CourseContext";
+import { AuthContext } from "../context/authContext";
+import UpdateCourseModel from "../Model/UpdateCourseModel";
 const learningPoints = [
   "Its best to learn now",
   "You will gain a lot of knowledge",
@@ -19,45 +20,43 @@ const learningPoints = [
 ];
 
 function CourseDetail() {
-  const [selectedCourse , setSelectedCourse] = useState(null);
-  const {course} = useContext(CourseContext);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const { course } = useContext(CourseContext);
 
-  const {id} = useParams();
+  const { id } = useParams();
 
-  
-
-  useEffect(()=>{
-
-    const filterOutCourse = ()=>{
-      let filteredCourse = course.filter((course,ind)=>{
-        return course._id == id
-      })
+  useEffect(() => {
+    const filterOutCourse = () => {
+      let filteredCourse = course.filter((course, ind) => {
+        return course._id == id;
+      });
       console.log(...filteredCourse);
       setSelectedCourse(...filteredCourse);
-    }
-    if(course != null){
+    };
+    if (course != null) {
       filterOutCourse();
     }
-  },[course])
+  }, [course]);
 
-  if(!selectedCourse){
-    return <h1 className="text-2xl font-bold  mt-20">Loading.....</h1>
+  if (!selectedCourse) {
+    return <h1 className="text-2xl font-bold  mt-20">Loading.....</h1>;
   }
   return (
     <div className="CourseDetail-container">
-       <UpperDiv selectedCourse={selectedCourse}/>
-      <WhatyouLearn selectedCourse={selectedCourse}/>
-      <CheckOut selectedCourse={selectedCourse}/> 
+      <UpperDiv selectedCourse={selectedCourse} />
+      <WhatyouLearn selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse} />
+      <CheckOut selectedCourse={selectedCourse} />
     </div>
   );
 }
 
-const UpperDiv = ({selectedCourse}) => {
+// Checkout
+const UpperDiv = ({ selectedCourse }) => {
   return (
     <div className="upperDiv-container mt-10">
       <div className="innerDiv-container">
         <h1>{selectedCourse.description}</h1>
-       
+
         <div className="ratingCont">
           <p style={{ color: "gold", fontSize: "18px" }}>
             <b>4</b>
@@ -66,13 +65,16 @@ const UpperDiv = ({selectedCourse}) => {
           <p style={{ textDecoration: "underline" }}>( 842 ratings )</p>
           <p>2,585 students</p>
         </div>
-        <p>Created by <i> {selectedCourse.tutor}</i></p>
+        <p>
+          Created by <i> {selectedCourse.tutor}</i>
+        </p>
       </div>
     </div>
   );
 };
 
-const WhatyouLearn = () => {
+const WhatyouLearn = ({selectedCourse , setSelectedCourse}) => {
+  const [updateCourseView, setUpdateCourseView] = useState(false);
   return (
     <div className="learn-Component">
       <div className="inner-Learn">
@@ -85,12 +87,22 @@ const WhatyouLearn = () => {
             </p>
           ))}
         </div>
+        {/* #TODO:mention the admin and only instructor to update the courses title , description , course image etc. */}
+        {
+          <button
+            onClick={() => setUpdateCourseView(!updateCourseView)}
+            className="bg-neutral-600 px-2 py-3 rounded-md text-neutral-200 hover:bg-neutral-600/90 font-semibold"
+          >
+            Update Course
+          </button>
+        }
       </div>
+      {updateCourseView && <UpdateCourseModel selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse} />}
     </div>
   );
 };
 
-const CheckOut = ({selectedCourse}) => {
+const CheckOut = ({ selectedCourse }) => {
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -144,15 +156,15 @@ const CheckOut = ({selectedCourse}) => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
-  
-const [text , setText] = useState('')
-  const changeToUpperCase = (e)=>{
+
+  const [text, setText] = useState("");
+  const changeToUpperCase = (e) => {
     setText(e.target.value.toUpperCase());
-  }
+  };
   return (
     <div className="checkout-container">
       <img
-        src="https://images.unsplash.com/photo-1661097410573-16d926ec1ec7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        src={selectedCourse.image_link}
         alt="this is the course"
       />
 
@@ -209,7 +221,7 @@ const [text , setText] = useState('')
               label="Enter Coupen"
               value={text}
               variant="outlined"
-              sx={{ fontSize: '2px' }}
+              sx={{ fontSize: "2px" }}
               onChange={changeToUpperCase}
               type="text"
             />

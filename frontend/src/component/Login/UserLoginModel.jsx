@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Login from "../Login";
-import Signup from "../Signup";
+import Login from "./Login";
+import Signup from "./Signup";
 
 function UserLoginModel({setUserLoginModel}) {
   const [loginBtn, setLoginBtn] = useState(true);

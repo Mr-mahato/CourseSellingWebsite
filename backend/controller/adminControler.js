@@ -44,13 +44,13 @@ const signUp = async (req, res) => {
 
 // LOGIN
 const login = async (req, res) => {
+  
   try {
     const { email, password } = req.body;
     const { error } = LoginSchema.safeParse({ email, password });
     if (error) {
       let err = JSON.parse(error.message);
       res.status(400).json({ Error: err[0].message });
-      return;
     }
 
     const user = await userModal.findOne({ email });
@@ -58,22 +58,22 @@ const login = async (req, res) => {
     if (user && (await bcrypt.compareSync(password, user.password))) {
 
       // user found save in express session
-      req.session.user = {
+      const userSave = {
         id: user._id,
         username: user.username,
         email: user.email,
         role: user.role,
       }
       const token = generateToken({ id: user._id });
-
+      console.log(token);
       // token storing in HTTPonly Cookie
-      res.cookie("token", token, {
+      res.cookie("jwtToken", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: false,
+        sameSite:"Lax"
       });
 
-      res.status(202).json({ message: "login successfully" , status:"success"});
+      res.status(202).json({ message: "login successfully" , status:"success" , user:userSave});
     } else {
       res
         .status(403)

@@ -1,12 +1,12 @@
 const {Schema , model} = require('mongoose');
 
 const courseSchema = new Schema({
-    Title:String,
-    Description:String,
-    Price:Number,
-    Published:Boolean,
-    Tutor:String,
-    File:String,
+    title:String,
+    description:String,
+    price:Number,
+    tutor:String,
+    image_link:String,
+    category:String,
     createdAt:{
         type:Date,
         default:Date.now
